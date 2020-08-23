@@ -30,3 +30,13 @@
 *.exe
 *.out
 *.app
+
+# Other
+*.pdb
+*.ilk
+*.txt
+
+# Visual Studio
+*.vcxproj
+*.vcxproj.user
+*.sln
