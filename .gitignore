@@ -31,12 +31,18 @@
 *.out
 *.app
 
+# Visual Studio
+*.vcxproj
+*.sln
+
 # Other
 *.pdb
 *.ilk
 *.txt
-
-# Visual Studio
-*.vcxproj
-*.vcxproj.user
-*.sln
+*.tlog
+*.filters
+*.user
+*.ipch
+*.opendb
+*.log
+*.recipe
