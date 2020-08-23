@@ -46,3 +46,7 @@
 *.opendb
 *.log
 *.recipe
+*.idb
+*.enc
+*.suo
+*.db*
