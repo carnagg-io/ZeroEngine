@@ -6,12 +6,14 @@
 
 #include <string>
 
-	/*****
-	 * [LOGF_BASE] printf wrapper macro for easy, formatted logging.
-	 * [LOGF_INFO] No urgency associated with this call, used for tracking processes primarily.
-	 * [LOGF_WARN] Minor urgency associated with this call, used for warning.
-	 * [LOGF_CRIT] Major urgency associated with this call, used for critical issues.
-	 *****/
+/*****
+ * [LOGF_BASE] printf wrapper macro for easy, formatted logging.
+ * [LOGF_INFO] No urgency associated with this call, used for tracking processes primarily.
+ * [LOGF_WARN] Minor urgency associated with this call, used for warning.
+ * [LOGF_CRIT] Major urgency associated with this call, used for critical issues.
+ *****/
+#pragma message("TODO: Implement log text color per platform. Start with Windows.")
+
 #define LOGF_BASE(logLevel, format, ...) ZLogger::log((logLevel), (format), ##__VA_ARGS__)
 #define LOGF_INFO(format, ...) LOGF_BASE((LOG_LVL_INFO), (format), ##__VA_ARGS__)
 #define LOGF_WARN(format, ...) LOGF_BASE((LOG_LVL_WARN), (format), ##__VA_ARGS__)

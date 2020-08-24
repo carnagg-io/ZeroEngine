@@ -11,11 +11,15 @@ namespace ZLogger
 	void log(LogLevel logLevel, const char* format, ...)
 	{
 #if DEBUG
+
+#pragma message("TODO: Look at the cost of calling malloc for every log call.")
+
 		const char* prefix = getLogPrefix(logLevel);
-		int finalSize = strlen(prefix) + strlen("\t") + strlen(format) + (size_t)100;
+		int finalSize = strlen(prefix) + strlen("\t") + strlen(format) + 1;
 		char* finalFormat = (char*)malloc(finalSize);
 		
-		strcpy_s(finalFormat, finalSize, prefix);
+		memset(finalFormat, 0, sizeof(char) * finalSize);
+		strcat_s(finalFormat, finalSize, prefix);
 		strcat_s(finalFormat, finalSize, "\t");
 		strcat_s(finalFormat, finalSize, format);
 
@@ -28,25 +32,25 @@ namespace ZLogger
 #endif
 	}
 
+#if DEBUG
 	/*****
 	 * [getLogPrefix]
 	 * Returns a string associated with the logLevel passed in.
 	 *****/
 	const char* getLogPrefix(LogLevel logLevel)
 	{
-#if DEBUG
 		switch (logLevel)
 		{
 		case LOG_LVL_INFO:
-			return "[LOG_INFO]";
+			return "[LOGF_INFO]";
 		case LOG_LVL_WARN:
-			return "[LOG_WARN]";
+			return "[LOGF_WARN]";
 		case LOG_LVL_CRIT:
-			return "[LOG_CRIT]";
+			return "[LOGF_CRIT]";
 		default:
-			return "[LOG_NONE]";
+			return "[LOGF_NONE]";
 		}
-#endif
 		return "";
 	}
+#endif
 }
