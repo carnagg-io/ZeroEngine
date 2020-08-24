@@ -9,7 +9,7 @@ namespace ZEngine
 	 *****/
 	bool initialize()
 	{
-		LOGF_INFO("Beginning engine initialization...\n", "");
+		LOGF_INFO("Beginning engine initialization.%s%s", "\n", "\n");
 		return false;
 	}
 
