@@ -2,7 +2,7 @@
 #define LOGGER_H
 
 #include "ZeroEngineDefs.h"
-#include "Logger\LogLevel.h"
+#include "Logger\LoggerDefs.h"
 
 #include <string>
 
@@ -15,9 +15,9 @@
 #pragma message("TODO: Implement log text color per platform. Start with Windows.")
 
 #define LOGF_BASE(logLevel, format, ...) ZLogger::log((logLevel), (format), ##__VA_ARGS__)
-#define LOGF_INFO(format, ...) LOGF_BASE((LOG_LVL_INFO), (format), ##__VA_ARGS__)
-#define LOGF_WARN(format, ...) LOGF_BASE((LOG_LVL_WARN), (format), ##__VA_ARGS__)
-#define LOGF_CRIT(format, ...) LOGF_BASE((LOG_LVL_CRIT), (format), ##__VA_ARGS__)
+#define LOGF_INFO(format, ...) LOGF_BASE((ZLogger::LOG_LVL_INFO), (format), ##__VA_ARGS__)
+#define LOGF_WARN(format, ...) LOGF_BASE((ZLogger::LOG_LVL_WARN), (format), ##__VA_ARGS__)
+#define LOGF_CRIT(format, ...) LOGF_BASE((ZLogger::LOG_LVL_CRIT), (format), ##__VA_ARGS__)
 
 namespace ZLogger
 {
@@ -25,6 +25,7 @@ namespace ZLogger
 	static HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 #endif // WINDOWS
 
+	bool initializeChannelFlags();
 	void log(LogLevel logLevel, const char* format, ...);
 	const char* getLogPrefix(LogLevel logLevel);
 	const int getLogColor(LogLevel logLevel);

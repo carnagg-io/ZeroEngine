@@ -4,6 +4,8 @@
 #define DEBUG !NDEBUG
 #define WINDOWS _WIN32 || _WIN64
 
+typedef unsigned int BITFIELD;
+
 #if WINDOWS
 #include <windows.h> 
 #endif

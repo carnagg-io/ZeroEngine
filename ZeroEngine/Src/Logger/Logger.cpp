@@ -2,8 +2,23 @@
 
 #include <stdarg.h>
 
+static BITFIELD ChannelFlags = 0x00000000; // 32 bits
+
+#pragma message("TODO: Probably going to have to make this a class. :( How else will the logger bitfield be safe?\n")
 namespace ZLogger
 {
+	/*****
+	 * [initializeChannelFlags]
+	 * Initialize the channel flag bit field.
+	 *****/
+	bool initializeChannelFlags()
+	{
+		// This needs file IO! Do it. Eventually.
+		LOGF_WARN("Unable to initialize the channel flags. All channels enabled my default.\n", "");
+		ChannelFlags = MAX_MASK;
+		return false;
+	}
+
 	/*****
 	 * [log]
 	 * Wrapper for printf to include log level indication.
@@ -12,10 +27,10 @@ namespace ZLogger
 	{
 #if DEBUG
 
-#pragma message("TODO: Look at the cost of calling malloc for every log call.")
+#pragma message("TODO: Look at the cost of calling malloc for every log call. C++20 supports format!\n")
 
 		const char* prefix = getLogPrefix(logLevel);
-		int finalSize = strlen(prefix) + strlen("\t") + strlen(format) + 1;
+		size_t finalSize = strlen(prefix) + strlen("\t") + strlen(format) + (size_t)1;
 		char* finalFormat = (char*)malloc(finalSize);
 		
 		memset(finalFormat, 0, sizeof(char) * finalSize);
@@ -58,6 +73,10 @@ namespace ZLogger
 	}
 
 #if WINDOWS
+	/*****
+	 * [getLogColor]
+	 * Returns an integer value for the color associated with the log level passed in.
+	 *****/
 	const int getLogColor(LogLevel logLevel)
 	{
 		switch (logLevel)
