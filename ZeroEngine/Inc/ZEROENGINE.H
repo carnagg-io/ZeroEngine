@@ -6,6 +6,6 @@ namespace ZEngine
 	bool initialize();
 	bool loop();
 	bool terminate();
-}
+} // ZEngine
 
-#endif
+#endif // ZERO_ENGINE_H

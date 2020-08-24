@@ -23,13 +23,17 @@ namespace ZLogger
 		strcat_s(finalFormat, finalSize, "\t");
 		strcat_s(finalFormat, finalSize, format);
 
+#if WINDOWS
+		SetConsoleTextAttribute(hConsoleHandle, getLogColor(logLevel));
+#endif // WINDOWS
+
 		va_list args;
 		va_start(args, format);
 		vprintf(finalFormat, args);
 		va_end(args);
 
 		free(finalFormat);
-#endif
+#endif // DEBUG
 	}
 
 #if DEBUG
@@ -52,5 +56,22 @@ namespace ZLogger
 		}
 		return "";
 	}
-#endif
-}
+
+#if WINDOWS
+	const int getLogColor(LogLevel logLevel)
+	{
+		switch (logLevel)
+		{
+		case LOG_LVL_INFO:
+			return 15;
+		case LOG_LVL_WARN:
+			return 14;
+		case LOG_LVL_CRIT:
+			return 12;
+		default:
+			return 15;
+		}
+	}
+#endif // WINDOWS
+#endif // DEBUG
+} // ZLogger

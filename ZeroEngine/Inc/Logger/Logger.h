@@ -21,8 +21,13 @@
 
 namespace ZLogger
 {
+#if WINDOWS
+	static HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+#endif // WINDOWS
+
 	void log(LogLevel logLevel, const char* format, ...);
 	const char* getLogPrefix(LogLevel logLevel);
-}
+	const int getLogColor(LogLevel logLevel);
+} // ZLogger
 
-#endif
+#endif // LOGGER_H

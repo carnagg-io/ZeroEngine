@@ -10,4 +10,4 @@ enum LogLevel
 	LOG_LVL_MAX = 4
 };
 
-#endif
+#endif // LOG_LEVEL_H
