@@ -10,6 +10,7 @@ namespace ZLogger
 	 *****/
 	void log(LogLevel logLevel, const char* format, ...)
 	{
+#if DEBUG
 		const char* prefix = getLogPrefix(logLevel);
 		int finalSize = strlen(prefix) + strlen("\t") + strlen(format) + (size_t)100;
 		char* finalFormat = (char*)malloc(finalSize);
@@ -24,6 +25,7 @@ namespace ZLogger
 		va_end(args);
 
 		free(finalFormat);
+#endif
 	}
 
 	/*****
@@ -32,6 +34,7 @@ namespace ZLogger
 	 *****/
 	const char* getLogPrefix(LogLevel logLevel)
 	{
+#if DEBUG
 		switch (logLevel)
 		{
 		case LOG_LVL_INFO:
@@ -41,7 +44,9 @@ namespace ZLogger
 		case LOG_LVL_CRIT:
 			return "[LOG_CRIT]";
 		default:
-			return "[LOG_UNKN]";
+			return "[LOG_NONE]";
 		}
+#endif
+		return "";
 	}
 }

@@ -3,21 +3,33 @@
 
 namespace ZEngine
 {
+	/*****
+	 * [initializae]
+	 * Calls initialization for every subprocess of the engine.
+	 *****/
 	bool initialize()
 	{
-		LOG_INFO("Beginning engine initialization...\n", "");
+		LOGF_INFO("Beginning engine initialization...\n", "");
 		return false;
 	}
 
+	/*****
+	 * [loop]
+	 * Engine loop.
+	 *****/
 	bool loop()
 	{
-		LOG_INFO("Beginning engine loop...\n", "");
+		LOGF_INFO("Beginning engine loop...\n", "");
 		return false;
 	}
 
+	/*****
+	 * [log]
+	 * Termination sequence to cleanup any loose ends.
+	 *****/
 	bool terminate()
 	{
-		LOG_INFO("Beginning engine termination sequence...\n", "");
+		LOGF_INFO("Beginning engine termination sequence...\n", "");
 		return false;
 	}
 }
