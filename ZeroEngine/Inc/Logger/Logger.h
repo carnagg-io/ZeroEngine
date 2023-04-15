@@ -5,30 +5,32 @@
 #include "Logger\LoggerDefs.h"
 
 #include <string>
+/// <summary>
+/// <code>LOGF_BASE</code> printf wrapper macro for easy, formatted logging.
+/// </summary>
+#define LOGF_BASE(logLevel, logFormat, ...) ZLogger::logFormatted((logLevel), (logFormat), ##__VA_ARGS__)
 
-/*****
- * [LOGF_BASE] printf wrapper macro for easy, formatted logging.
- * [LOGF_INFO] No urgency associated with this call, used for tracking processes primarily.
- * [LOGF_WARN] Minor urgency associated with this call, used for warning.
- * [LOGF_CRIT] Major urgency associated with this call, used for critical issues.
- *****/
-#pragma message("TODO: Implement log text color per platform. Start with Windows.")
+ /// <summary>
+ /// <code>LOGF_INFO</code> No urgency associated with this call, used for tracking processes primarily.
+ /// </summary>
+#define LOGF_INFO(logFormat, ...) LOGF_BASE((ZLogger::LogLevel::LOG_LVL_INFO), (logFormat), ##__VA_ARGS__)
 
-#define LOGF_BASE(logLevel, format, ...) ZLogger::log((logLevel), (format), ##__VA_ARGS__)
-#define LOGF_INFO(format, ...) LOGF_BASE((ZLogger::LOG_LVL_INFO), (format), ##__VA_ARGS__)
-#define LOGF_WARN(format, ...) LOGF_BASE((ZLogger::LOG_LVL_WARN), (format), ##__VA_ARGS__)
-#define LOGF_CRIT(format, ...) LOGF_BASE((ZLogger::LOG_LVL_CRIT), (format), ##__VA_ARGS__)
+/// <summary>
+/// <code>LOGF_WARN</code> Minor urgency associated with this call, used for warning.
+/// </summary>
+#define LOGF_WARN(logFormat, ...) LOGF_BASE((ZLogger::LogLevel::LOG_LVL_WARN), (logFormat), ##__VA_ARGS__)
+
+/// <summary>
+/// <code>LOGF_CRIT</code> Major urgency associated with this call, used for critical issues.
+/// </summary>
+#define LOGF_CRIT(logFormat, ...) LOGF_BASE((ZLogger::LogLevel::LOG_LVL_CRIT), (logFormat), ##__VA_ARGS__)
 
 namespace ZLogger
 {
-#if WINDOWS
-	static HANDLE hConsoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
-#endif // WINDOWS
-
-	bool initializeChannelFlags();
-	void log(LogLevel logLevel, const char* format, ...);
-	const char* getLogPrefix(LogLevel logLevel);
-	const int getLogColor(LogLevel logLevel);
+    bool initializeChannelFlags();
+    void logFormatted(LogLevel logLevel, const char* logFormat, ...);
+    const char* getLogPrefix(LogLevel logLevel);
+    const int getLogColor(LogLevel logLevel);
 } // ZLogger
 
 #endif // LOGGER_H

@@ -2,8 +2,8 @@
 
 int main()
 {
-	ZEngine::initialize();
-	ZEngine::loop();
-	ZEngine::terminate();
-	return 0;
+    ZEngine::initialize();
+    ZEngine::loop();
+    ZEngine::terminate();
+    return 0;
 }
