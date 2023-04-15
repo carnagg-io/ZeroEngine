@@ -1,0 +1,2 @@
+C:\Users\Jordan\source\repos\ZeroEngine\ZeroEngine\x64\Debug\ZeroEngine.lib
+C:\Users\Jordan\source\repos\ZeroEngine\ZeroEngine\x64\Debug\ZeroEngine.pdb
