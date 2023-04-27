@@ -1,5 +1,5 @@
-﻿  Logger.cpp
-  TODO: Look at the cost of calling malloc for every log call. C++20 supports format!
+﻿  Renderer.cpp
+  Settings.cpp
   ZeroEngine.cpp
   Generating Code...
   ZeroEngine.vcxproj -> C:\Users\Jordan\source\repos\ZeroEngine\ZeroEngine\x64\Debug\ZeroEngine.lib

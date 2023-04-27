@@ -81,6 +81,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\Jordan\source\Libraries\SDL2-2.26.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\Jordan\source\Libraries\SDL2-2.26.5\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -128,7 +130,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(ProjectDir)..\ZeroEngine\x64\Debug\ZeroEngine.lib</AdditionalDependencies>
+      <AdditionalDependencies>shell32.lib;SDL2.lib;SDL2main.lib;$(ProjectDir)..\ZeroEngine\x64\Debug\ZeroEngine.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
