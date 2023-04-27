@@ -49,7 +49,6 @@ namespace ZEngine
                 {
                     SDL_FillRect(m_Surface, NULL, SDL_MapRGB(m_Surface->format, 0xFF, 0xFF, 0xFF));
                     SDL_UpdateWindowSurface(m_Window);
-                    SDL_Event e; bool quit = false; while (quit == false) { while (SDL_PollEvent(&e)) { if (e.type == SDL_QUIT) quit = true; } }
                     return true;
                 }
                 else
