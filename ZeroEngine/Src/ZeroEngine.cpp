@@ -8,7 +8,10 @@ namespace ZEngine
     /// </summary>
     bool initialize()
     {
-        LOGF_INFO("Beginning engine initialization.%s", "\n");
+        // LOGGER
+        ZLogger::initialize();
+
+        LOGF_INFO(ZLogger::LogFilter::LOG_FILTER_NONE, "Beginning engine initialization.%s", "\n");
         if (Renderer* renderer = Renderer::instance())
         {
             return renderer->initialize();
@@ -21,7 +24,7 @@ namespace ZEngine
     /// </summary>
     bool loop()
     {
-        LOGF_WARN("Beginning engine loop...\n", "");
+        LOGF_WARN(ZLogger::LogFilter::LOG_FILTER_NONE, "Beginning engine loop...\n", "");
         if (Renderer* renderer = Renderer::instance())
         {
             return renderer->loop();
@@ -34,7 +37,7 @@ namespace ZEngine
     /// </summary>
     bool terminate()
     {
-        LOGF_CRIT("Beginning engine termination sequence...\n", "");
+        LOGF_CRIT(ZLogger::LogFilter::LOG_FILTER_NONE, "Beginning engine termination sequence...\n", "");
         if (Renderer* renderer = Renderer::instance())
         {
             return renderer->terminate();

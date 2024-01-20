@@ -9,21 +9,23 @@ namespace ZLogger
         LOG_LVL_INFO    = 1,
         LOG_LVL_WARN    = 2,
         LOG_LVL_CRIT    = 3,
-        LOG_LVL_MAX     = 4
+        LOG_LVL_MAX     = 4,
     };
     
     const int NUM_LOG_CHANNELS = 4;
     const BITFIELD MAX_MASK = 0xFFFFFFFF;
     
     /// <summary>
-    /// <code>LogChannel</code> values are formatted for use as bit flags.
+    /// <code>LogFilter</code> values are formatted for use as bit flags.
     /// </summary>
-    enum LogChannel
+    enum LogFilter
     {
-        LOG_CHAN_NONE       = 1 << 0,   // None             (0000 0000 0000 0000 0000 0000 0000 0001)
-        LOG_CHAN_GRAPHICS   = 1 << 1,   // Graphics         (0000 0000 0000 0000 0000 0000 0000 0010)
-        LOG_CHAN_UI         = 1 << 2,   // User Interface   (0000 0000 0000 0000 0000 0000 0000 0100)
-        LOG_CHAN_AUDIO      = 1 << 3    // Audio            (0000 0000 0000 0000 0000 0000 0000 1000)
+        LOG_FILTER_NONE       = 1 << 0,   // None             (0000 0000 0000 0000 0000 0000 0000 0001)
+        LOG_FILTER_RENDERER   = 1 << 1,   // Renderer         (0000 0000 0000 0000 0000 0000 0000 0010)
+        LOG_FILTER_UI         = 1 << 2,   // User Interface   (0000 0000 0000 0000 0000 0000 0000 0100)
+        LOG_FILTER_AUDIO      = 1 << 3,   // Audio            (0000 0000 0000 0000 0000 0000 0000 1000)
+        LOG_FILTER_INPUT      = 1 << 4,   // Input            (0000 0000 0000 0000 0000 0000 0001 0000)
+        LOG_FILTER_LOGGER     = 1 << 5,   // Logger           (0000 0000 0000 0000 0000 0000 0010 0000)
     };
 } // ZLogger
 

@@ -28,7 +28,7 @@ namespace ZEngine
     {
         if (SDL_Init(SDL_INIT_VIDEO) < 0)
         {
-            LOGF_CRIT("[[[VIDEO INIT FAILED]]] Error: %s\n", SDL_GetError());
+            LOGF_CRIT(ZLogger::LogFilter::LOG_FILTER_RENDERER, "[[[VIDEO INIT FAILED]]] Error: %s\n", SDL_GetError());
             return false;
         }
         else
@@ -36,7 +36,7 @@ namespace ZEngine
             int resX = 1920;
             int resY = 1080;
 
-            if (Settings* settings = Settings::instance())
+            if (GraphicsSettings* settings = SettingsManager::instance()->graphics())
             {
                 resX = settings->resX();
                 resY = settings->resY();
@@ -53,13 +53,13 @@ namespace ZEngine
                 }
                 else
                 {
-                    LOGF_CRIT("[[[SURFACE INIT FAILED]]] Error: %s\n", SDL_GetError());
+                    LOGF_CRIT(ZLogger::LogFilter::LOG_FILTER_RENDERER, "[[[SURFACE INIT FAILED]]] Error: %s\n", SDL_GetError());
                     return false;
                 }
             }
             else
             {
-                LOGF_CRIT("[[[WINDOW INIT FAILED]]] Error: %s\n", SDL_GetError());
+                LOGF_CRIT(ZLogger::LogFilter::LOG_FILTER_RENDERER, "[[[WINDOW INIT FAILED]]] Error: %s\n", SDL_GetError());
                 return false;
             }
         }

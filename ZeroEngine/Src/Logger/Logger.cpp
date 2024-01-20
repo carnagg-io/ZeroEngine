@@ -12,31 +12,39 @@ namespace ZLogger
     /// <summary>
     /// Initialize the channel flag bit field.
     /// </summary>
-    bool initializeChannelFlags()
+    bool initialize()
     {
 #if DEBUG
-        LOGF_WARN("Unable to initialize the channel flags. All channels enabled my default.\n", "");
+#pragma message("TODO: INI file for logging channels. Printing to all channels now.\n")
+
         ChannelFlags = MAX_MASK;
+        LOGF_INFO(LogFilter::LOG_FILTER_LOGGER, "Initialization complete.\n");
 #endif // DEBUG
         return false;
     
     }
 
     /// <summary>
-    /// Wrapper for printf to include log level indication.
+    /// Wrapper for printf to include log level indication and associated channel.
     /// </summary>
-    void logFormatted(LogLevel logLevel, const char* logFormat, ...)
+    void logFormatted(LogLevel logLevel, LogFilter logChannel, const char* logFormat, ...)
     {
 #if DEBUG
+        if ((ChannelFlags & logChannel) != logChannel)
+        {
+            return;
+        }
 
 #pragma message("TODO: Look at the cost of calling malloc for every log call. C++20 supports format!\n")
 
-        const char* prefix = getLogPrefix(logLevel);
-        size_t finalSize = strlen(prefix) + strlen("\t") + strlen(logFormat) + (size_t)1;
+        const char* levelPrefix = getLogLevelPrefix(logLevel);
+        const char* channelPrefix = getLogChannelPrefix(logChannel);
+        size_t finalSize = strlen(levelPrefix) + strlen(channelPrefix) + strlen("\t") + strlen(logFormat) + (size_t)1;
         char* finalFormat = (char*)malloc(finalSize);
-    
+
         memset(finalFormat, 0, sizeof(char) * finalSize);
-        strcat_s(finalFormat, finalSize, prefix);
+        strcat_s(finalFormat, finalSize, levelPrefix);
+        strcat_s(finalFormat, finalSize, channelPrefix);
         strcat_s(finalFormat, finalSize, "\t");
         strcat_s(finalFormat, finalSize, logFormat);
 
@@ -56,7 +64,7 @@ namespace ZLogger
     /// <summary>
     /// Returns a string associated with the logLevel passed in.
     /// </summary>
-    const char* getLogPrefix(LogLevel logLevel)
+    const char* getLogLevelPrefix(LogLevel logLevel)
     {
 #if DEBUG
         switch (logLevel)
@@ -71,6 +79,30 @@ namespace ZLogger
             return "[LOGF_NONE]";
         }
  #endif // DEBUG
+    }
+
+    /// <summary>
+    /// Returns a string associated with the logChannel passed in.
+    /// </summary>
+    const char* getLogChannelPrefix(LogFilter logChannel)
+    {
+#if DEBUG
+        switch (logChannel)
+        {
+        case LogFilter::LOG_FILTER_RENDERER:
+            return "[RENDERER]";
+        case LogFilter::LOG_FILTER_UI:
+            return "[UI]";
+        case LogFilter::LOG_FILTER_AUDIO:
+            return "[AUDIO]";
+        case LogFilter::LOG_FILTER_INPUT:
+            return "[INPUT]";
+        case LogFilter::LOG_FILTER_LOGGER:
+            return "[LOGGER]";
+        default:
+            return "[NONE]";
+        }
+#endif // DEBUG
     }
 
     /// <summary>

@@ -25,7 +25,9 @@
     <ClInclude Include="Inc\Logger\Logger.h" />
     <ClInclude Include="Inc\Logger\LoggerDefs.h" />
     <ClInclude Include="Inc\Renderer\Renderer.h" />
-    <ClInclude Include="Inc\Settings\Settings.h" />
+    <ClInclude Include="Inc\Resources\ResourceManager.h" />
+    <ClInclude Include="Inc\Settings\GraphicsSettings.h" />
+    <ClInclude Include="Inc\Settings\SettingsManager.h" />
     <ClInclude Include="Inc\ZEROENGINE.H" />
     <ClInclude Include="Inc\ZeroEngineDefs.h" />
   </ItemGroup>
@@ -33,7 +35,9 @@
     <ClCompile Include="Src\FileHandle\FileHandle.cpp" />
     <ClCompile Include="Src\Logger\Logger.cpp" />
     <ClCompile Include="Src\Renderer\Renderer.cpp" />
-    <ClCompile Include="Src\Settings\Settings.cpp" />
+    <ClCompile Include="Src\Resources\ResourceManager.cpp" />
+    <ClCompile Include="Src\Settings\GraphicsSettings.cpp" />
+    <ClCompile Include="Src\Settings\SettingsManager.cpp" />
     <ClCompile Include="Src\ZeroEngine.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClCompile Include="Src\Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Config\BaseGame.ini" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
