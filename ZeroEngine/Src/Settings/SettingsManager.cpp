@@ -3,6 +3,7 @@
 namespace ZEngine
 {
     SettingsManager* SettingsManager::m_instance = nullptr;
+    GraphicsSettings* SettingsManager::m_settingsGraphics = nullptr;
 
     SettingsManager::SettingsManager()
     {
