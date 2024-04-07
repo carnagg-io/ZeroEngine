@@ -10,6 +10,7 @@
 # Precompiled Headers
 *.gch
 *.pch
+*.ipch
 
 # Compiled Dynamic libraries
 *.so
@@ -25,8 +26,18 @@
 *.la
 *.a
 *.lib
+*.lib.recipe
 
 # Executables
 *.exe
+*.exe.recipe
 *.out
 *.app
+
+# Logs
+*.log
+*.tlog
+
+# VS Stuff
+*.vsidx
+*.lock
