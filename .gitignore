@@ -43,6 +43,7 @@
 *.lock
 *.suo
 *.FileListAbsolute.txt
+*.json
 
 # Code database
 *.pdb
