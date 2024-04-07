@@ -42,9 +42,13 @@
 *.vsidx
 *.lock
 *.suo
+*.FileListAbsolute.txt
 
 # Code database
 *.pdb
 *.db
 *.idb
+*.db-shm
+*.db-wal
+*.opendb
 *.ilk
