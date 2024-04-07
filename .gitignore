@@ -41,3 +41,9 @@
 # VS Stuff
 *.vsidx
 *.lock
+*.suo
+
+# Code database
+*.pdb
+*.db
+*.ilk
